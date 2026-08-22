@@ -1,0 +1,24 @@
+.new-order-page {
+  background-color: #fff9ec;
+  min-height: 100vh;
+  padding: 32px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.new-order-eyebrow {
+  color: #e1341e;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.new-order-title {
+  color: #33383f;
+  font-size: 26px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}

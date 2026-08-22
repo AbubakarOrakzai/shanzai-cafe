@@ -1,0 +1,179 @@
+.walkin-order {
+  background-color: #fff;
+  border: 1px solid #33383f1a;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.walkin-order-title {
+  font-size: 18px;
+  color: #33383f;
+  margin: 0 0 4px;
+}
+
+.walkin-order-subtitle {
+  font-size: 13px;
+  color: #33383f80;
+  margin: 0 0 16px;
+}
+
+.walkin-order-message {
+  background-color: #2f7a5f14;
+  color: #2f7a5f;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.walkin-order-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.walkin-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.walkin-product-box {
+  background-color: #fff9ec;
+  border: 1px solid #33383f1a;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.walkin-product-box:hover {
+  border-color: #e1341e;
+}
+
+.walkin-product-box img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.walkin-product-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #33383f;
+}
+
+.walkin-product-price {
+  font-size: 12px;
+  color: #e1341e;
+  font-weight: 700;
+}
+
+.walkin-cart {
+  background-color: #fff9ec;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.walkin-cart-title {
+  font-size: 14px;
+  color: #33383f;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.walkin-cart-empty {
+  color: #33383f80;
+  font-size: 13px;
+}
+
+.walkin-cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.walkin-cart-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #33383f;
+  background-color: #fff;
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+
+.walkin-cart-name {
+  flex: 1;
+}
+
+.walkin-cart-price {
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.walkin-cart-remove {
+  background: none;
+  border: none;
+  color: #e1341e;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.walkin-cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 16px;
+  color: #33383f;
+  border-top: 1px solid #33383f1a;
+  padding-top: 12px;
+  margin-bottom: 16px;
+}
+
+.walkin-cart-submit {
+  width: 100%;
+  background-color: #e1341e;
+  color: #fff9ec;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.walkin-cart-submit:hover {
+  background-color: #a8281c;
+}
+
+.walkin-cart-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 900px) {
+  .walkin-order-layout {
+    flex-direction: row;
+  }
+
+  .walkin-product-grid {
+    flex: 2;
+  }
+
+  .walkin-cart {
+    flex: 1;
+    align-self: flex-start;
+  }
+}

@@ -1,0 +1,99 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #33383f;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.login-card {
+  background-color: #fff9ec;
+  border-radius: 8px;
+  padding: 36px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.login-title {
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #33383f;
+  margin: 0 0 4px;
+}
+
+.login-title-accent {
+  color: #e1341e;
+}
+
+.login-subtitle {
+  color: #33383f99;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.login-error {
+  background-color: #e1341e14;
+  color: #e1341e;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border-left: 3px solid #e1341e;
+}
+
+.login-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #33383f99;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.login-input {
+  width: 100%;
+  border: 1px solid #33383f33;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #e1341e;
+}
+
+.login-submit {
+  width: 100%;
+  background-color: #e1341e;
+  color: #fff9ec;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.login-submit:hover {
+  background-color: #a8281c;
+}
+
+.login-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

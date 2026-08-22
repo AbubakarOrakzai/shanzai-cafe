@@ -1,0 +1,42 @@
+.product-grid-section {
+  background-color: #fff9ec;
+  padding: 56px 20px;
+}
+
+.product-grid-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-grid-eyebrow {
+  color: #e1341e;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.product-grid-title {
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #33383f;
+  margin: 0 0 24px;
+}
+
+.product-grid-empty {
+  color: #33383f99;
+  font-size: 14px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

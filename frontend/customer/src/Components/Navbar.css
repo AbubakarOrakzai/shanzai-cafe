@@ -1,0 +1,105 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: #33383f;
+  color: #fff9ec;
+}
+
+.navbar-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  font-weight: 900;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #fff9ec;
+  text-decoration: none;
+}
+
+.navbar-logo-accent {
+  color: #ffc72c;
+}
+
+.navbar-links {
+  display: none;
+  align-items: center;
+  gap: 28px;
+}
+
+.navbar-links a {
+  color: #fff9ecbb;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.navbar-links a:hover {
+  color: #fff9ec;
+}
+
+.navbar-btn {
+  background-color: #e8601c;
+  color: #fff9ec;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 10px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.navbar-btn:hover {
+  background-color: #c24f14;
+}
+
+.navbar-toggle {
+  background: none;
+  border: none;
+  color: #fff9ec;
+  font-size: 26px;
+  cursor: pointer;
+  display: block;
+}
+
+.navbar-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 20px;
+  border-top: 1px solid #fff9ec1a;
+}
+
+.navbar-mobile a {
+  color: #fff9ecbb;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.navbar-mobile .navbar-btn {
+  width: fit-content;
+}
+
+/* On wider screens, show the horizontal menu and hide the toggle/mobile menu */
+@media (min-width: 768px) {
+  .navbar-links {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: none;
+  }
+  .navbar-mobile {
+    display: none;
+  }
+}

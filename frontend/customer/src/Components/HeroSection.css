@@ -1,0 +1,81 @@
+.hero {
+  background-color: #33383f;
+  color: #fff9ec;
+}
+
+.hero-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.hero-eyebrow {
+  color: #ffc72c;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 44px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  max-width: 500px;
+  margin: 0;
+}
+
+.hero-title-accent {
+  color: #e1341e;
+}
+
+.hero-text {
+  color: #fff9ecb3;
+  margin-top: 20px;
+  max-width: 420px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.hero-btn-primary,
+.hero-btn-secondary {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 12px 24px;
+  border-radius: 4px;
+}
+
+.hero-btn-primary {
+  background-color: #e1341e;
+  color: #fff9ec;
+}
+
+.hero-btn-primary:hover {
+  background-color: #a8281c;
+}
+
+.hero-btn-secondary {
+  color: #fff9ec;
+  border: 1px solid #fff9ec66;
+}
+
+.hero-btn-secondary:hover {
+  border-color: #fff9ec;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 68px;
+  }
+}

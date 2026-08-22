@@ -1,0 +1,144 @@
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { AdminContext } from "../Context/AdminContext";
+import "./WalkInOrder.css";
+
+function WalkInOrder({ onOrderComplete }) {
+  const { API_URL, token } = useContext(AdminContext);
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]); // [{ _id, name, price, quantity }]
+  const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/products`)
+      .then((res) => setProducts(res.data))
+      .catch(() => setMessage("Failed to load products."));
+  }, []);
+
+  const addToCart = (product) => {
+    setMessage("");
+    const existing = cart.find((item) => item._id === product._id);
+    if (existing) {
+      setCart(
+        cart.map((item) =>
+          item._id === product._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCart([
+        ...cart,
+        { _id: product._id, name: product.name, price: product.price, quantity: 1 },
+      ]);
+    }
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart.filter((item) => item._id !== id));
+  };
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const completeOrder = async () => {
+    if (cart.length === 0) return;
+    setSubmitting(true);
+    setMessage("");
+
+    try {
+      await axios.post(
+        `${API_URL}/orders`,
+        {
+          items: cart.map((item) => ({
+            productId: item._id,
+            quantity: item.quantity,
+          })),
+        },
+        { headers: authHeaders }
+      );
+      setCart([]);
+      setMessage("Order saved.");
+      if (onOrderComplete) onOrderComplete();
+    } catch (err) {
+      setMessage("Failed to save order.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="walkin-order">
+      <h2 className="walkin-order-title">New walk-in order</h2>
+      <p className="walkin-order-subtitle">
+        Tap items the customer ordered, then complete the order.
+      </p>
+
+      {message && <p className="walkin-order-message">{message}</p>}
+
+      <div className="walkin-order-layout">
+        <div className="walkin-product-grid">
+          {products.map((p) => (
+            <button
+              key={p._id}
+              className="walkin-product-box"
+              onClick={() => addToCart(p)}
+            >
+              <img
+                src={`${API_URL.replace("/api", "")}/uploads/${p.image}`}
+                alt={p.name}
+              />
+              <span className="walkin-product-name">{p.name}</span>
+              <span className="walkin-product-price">Rs. {p.price}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="walkin-cart">
+          <h3 className="walkin-cart-title">Current order</h3>
+
+          {cart.length === 0 ? (
+            <p className="walkin-cart-empty">No items selected yet.</p>
+          ) : (
+            <div className="walkin-cart-list">
+              {cart.map((item) => (
+                <div className="walkin-cart-row" key={item._id}>
+                  <span className="walkin-cart-name">
+                    {item.name} x{item.quantity}
+                  </span>
+                  <span className="walkin-cart-price">
+                    Rs. {item.price * item.quantity}
+                  </span>
+                  <button
+                    className="walkin-cart-remove"
+                    onClick={() => removeFromCart(item._id)}
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="walkin-cart-total">
+            <span>Total</span>
+            <span>Rs. {total}</span>
+          </div>
+
+          <button
+            className="walkin-cart-submit"
+            onClick={completeOrder}
+            disabled={cart.length === 0 || submitting}
+          >
+            {submitting ? "Saving..." : "Complete order"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default WalkInOrder;
