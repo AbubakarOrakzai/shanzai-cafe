@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import "./ProductGrid.css";
+import "./ProductGride.css"
 
 function ProductGrid({ eyebrow, title, products }) {
   return (

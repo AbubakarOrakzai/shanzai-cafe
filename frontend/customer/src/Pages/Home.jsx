@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import HeroSection from "../Components/HeroSection";
-import ProductGrid from "../Components/ProductCard"
+import ProductGrid from "../Components/ProductGride";
 import { ShopContext } from "../context/ShopContext";
+import "./Home.css";
 
 function Home() {
   const { products, loading } = useContext(ShopContext);
@@ -22,16 +24,16 @@ function Home() {
     <div>
       <HeroSection />
 
+      <div className="home-menu-link-wrap">
+        <Link to="/menu" className="home-menu-link">
+          View full menu
+        </Link>
+      </div>
+
       <ProductGrid
         eyebrow="Crowd favorites"
         title="Best sellers"
         products={bestSellers}
-      />
-
-      <ProductGrid
-        eyebrow="Full menu"
-        title="All products"
-        products={products}
       />
     </div>
   );
