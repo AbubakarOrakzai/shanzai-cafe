@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables (contains secrets - never commit)
+.env
+**/.env
+
+# Build output
+dist/
+**/dist/
+
+# Uploaded product images (local dev only)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,14 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import axios from "axios";
 import { AdminContext } from "../Context/AdminContext";
 import "./WalkInOrder.css";
+
+function isToday(dateStr) {
+  const d = new Date(dateStr);
+  return d.toDateString() === new Date().toDateString();
+}
 
 function WalkInOrder({ onOrderComplete }) {
   const { API_URL, token } = useContext(AdminContext);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]); // [{ _id, name, price, quantity }]
+  const [todaysOrders, setTodaysOrders] = useState([]);
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
 
@@ -18,6 +25,17 @@ function WalkInOrder({ onOrderComplete }) {
       .then((res) => setProducts(res.data))
       .catch(() => setMessage("Failed to load products."));
   }, []);
+
+  const fetchTodaysOrders = useCallback(() => {
+    axios
+      .get(`${API_URL}/orders`)
+      .then((res) => setTodaysOrders(res.data.filter((o) => isToday(o.createdAt))))
+      .catch(() => {});
+  }, [API_URL]);
+
+  useEffect(() => {
+    fetchTodaysOrders();
+  }, [fetchTodaysOrders]);
 
   const addToCart = (product) => {
     setMessage("");
@@ -62,11 +80,25 @@ function WalkInOrder({ onOrderComplete }) {
       );
       setCart([]);
       setMessage("Order saved.");
+      fetchTodaysOrders();
       if (onOrderComplete) onOrderComplete();
     } catch (err) {
       setMessage("Failed to save order.");
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const deleteOrder = async (id) => {
+    setDeletingId(id);
+    try {
+      await axios.delete(`${API_URL}/orders/${id}`, { headers: authHeaders });
+      setTodaysOrders(todaysOrders.filter((o) => o._id !== id));
+      if (onOrderComplete) onOrderComplete();
+    } catch (err) {
+      setMessage("Failed to delete order.");
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -136,6 +168,38 @@ function WalkInOrder({ onOrderComplete }) {
             {submitting ? "Saving..." : "Complete order"}
           </button>
         </div>
+      </div>
+
+      <div className="walkin-recent">
+        <h3 className="walkin-recent-title">Today's orders</h3>
+
+        {todaysOrders.length === 0 ? (
+          <p className="walkin-recent-empty">No orders placed today yet.</p>
+        ) : (
+          <div className="walkin-recent-list">
+            {todaysOrders.map((order) => (
+              <div className="walkin-recent-row" key={order._id}>
+                <span className="walkin-recent-time">
+                  {new Date(order.createdAt).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+                <span className="walkin-recent-items">
+                  {order.items.map((i) => `${i.name} x${i.quantity}`).join(", ")}
+                </span>
+                <span className="walkin-recent-amount">Rs. {order.totalAmount}</span>
+                <button
+                  className="walkin-recent-delete"
+                  onClick={() => deleteOrder(order._id)}
+                  disabled={deletingId === order._id}
+                >
+                  {deletingId === order._id ? "Deleting..." : "Delete"}
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

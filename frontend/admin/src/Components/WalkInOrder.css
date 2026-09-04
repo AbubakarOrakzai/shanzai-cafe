@@ -177,3 +177,77 @@
     align-self: flex-start;
   }
 }
+
+.walkin-recent {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #33383f14;
+}
+
+.walkin-recent-title {
+  font-size: 14px;
+  color: #33383f;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 14px;
+}
+
+.walkin-recent-empty {
+  color: #33383f80;
+  font-size: 13px;
+}
+
+.walkin-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.walkin-recent-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 90px 90px;
+  align-items: center;
+  gap: 12px;
+  background-color: #fff9ec;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #33383f;
+}
+
+.walkin-recent-time {
+  color: #33383f80;
+  font-weight: 600;
+}
+
+.walkin-recent-items {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.walkin-recent-amount {
+  font-weight: 700;
+  text-align: right;
+}
+
+.walkin-recent-delete {
+  background-color: #e1341e14;
+  color: #e1341e;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.walkin-recent-delete:hover {
+  background-color: #e1341e2a;
+}
+
+.walkin-recent-delete:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

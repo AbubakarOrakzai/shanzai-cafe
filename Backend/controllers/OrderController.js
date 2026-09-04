@@ -61,4 +61,18 @@ const getOrders = async (req, res) => {
   }
 };
 
-module.exports = { createOrder, getOrders };
+// DELETE /api/orders/:id - admin cancels/deletes an order (e.g. customer changed their mind)
+const deleteOrder = async (req, res) => {
+  try {
+    const order = await Order.findByIdAndDelete(req.params.id);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+    res.json({ message: "Order deleted" });
+  } catch (err) {
+    console.error("deleteOrder error:", err);
+    res.status(500).json({ message: "Failed to delete order", error: err.message });
+  }
+};
+
+module.exports = { createOrder, getOrders, deleteOrder };
