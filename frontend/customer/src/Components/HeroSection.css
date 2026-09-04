@@ -1,12 +1,33 @@
 .hero {
   background-color: #33383f;
+  background-size: cover;
+  background-position: center top;
   color: #fff9ec;
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 27, 22, 0.72) 0%,
+    rgba(30, 27, 22, 0.5) 45%,
+    rgba(30, 27, 22, 0.15) 100%
+  );
 }
 
 .hero-inner {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-eyebrow {
@@ -77,5 +98,9 @@
 @media (min-width: 768px) {
   .hero-title {
     font-size: 68px;
+  }
+
+  .hero {
+    min-height: 640px;
   }
 }

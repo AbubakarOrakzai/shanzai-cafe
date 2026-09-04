@@ -18,7 +18,6 @@ function Navbar() {
           <Link to="/menu">Menu</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-          <button className="navbar-btn">Order now</button>
         </nav>
 
         <button

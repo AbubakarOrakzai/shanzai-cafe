@@ -1,0 +1,53 @@
+.breakdown-card {
+  background-color: #fff;
+  border: 1px solid #33383f1a;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+  min-width: 220px;
+}
+
+.breakdown-card-title {
+  color: #33383f99;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.breakdown-card-empty {
+  color: #33383f66;
+  font-size: 13px;
+  margin: 0;
+}
+
+.breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #33383f;
+  border-bottom: 1px solid #33383f0d;
+  padding-bottom: 8px;
+}
+
+.breakdown-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.breakdown-name {
+  font-weight: 600;
+}
+
+.breakdown-qty {
+  color: #e1341e;
+  font-weight: 700;
+}

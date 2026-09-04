@@ -1,19 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import heroBanner from "../assets/hero-banner.jfif";
 import "./HeroSection.css";
 
 function HeroSection() {
   return (
-    <section className="hero">
+    <section
+      className="hero"
+      style={{ backgroundImage: `url(${heroBanner})` }}
+    >
+      <div className="hero-overlay"></div>
       <div className="hero-inner">
-        <p className="hero-eyebrow">Order counter open till 11pm</p>
+        <p className="hero-eyebrow">WELCOME TO SHANZAI CAFE</p>
         <h1 className="hero-title">
-          EAT <span className="hero-title-accent">GOOD</span>.
+        wHERE FLAVOR MEETS
           <br />
-          FELL <span className="hero-title-accent">GOOD</span>.
+           <span className="hero-title-accent">FRIENDSHIP</span>.
         </h1>
         <p className="hero-text">
-        We have good quality burgers and pizzas available. Click here to see the full menu for more deals!
+          Flame-grilled patties, hand-cut fries and no shortcuts. Order at
+          the counter or online, ready in minutes.
         </p>
         <div className="hero-buttons">
           <Link to="/menu" className="hero-btn-primary">View menu</Link>
