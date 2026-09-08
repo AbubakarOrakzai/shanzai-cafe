@@ -5,8 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const connectDB = require("./config/db");
 const productRoutes = require("./routes/productroutes");
-const orderRoutes = require("./routes/orderRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+const orderRoutes = require("./routes/OrderRoutes");
 
 dotenv.config();
 connectDB();
@@ -29,7 +28,6 @@ app.use("/uploads", express.static(uploadsPath));
 
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/api/admin", adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
