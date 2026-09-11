@@ -1,12 +1,14 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
-import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import NewOrder from "./Pages/NewOrder";
 import Products from "./Pages/Product";
-import ProtectedRoute from "./Components/ProtectedRoute";
 import "./App.css";
+
+// NOTE: Login/auth is temporarily disabled - all routes are open.
+// Once real admin login is built, wrap these routes back in <ProtectedRoute>
+// and re-add the /login route.
 
 function AdminLayout({ children }) {
   return (
@@ -19,40 +21,31 @@ function AdminLayout({ children }) {
 
 function App() {
   return (
-  
     <Routes>
-      <Route path="/login" element={<Login />} />
-
       <Route
         path="/dashboard"
         element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <Dashboard />
-            </AdminLayout>
-          </ProtectedRoute>
+          <AdminLayout>
+            <Dashboard />
+          </AdminLayout>
         }
       />
 
       <Route
         path="/new-order"
         element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <NewOrder />
-            </AdminLayout>
-          </ProtectedRoute>
+          <AdminLayout>
+            <NewOrder />
+          </AdminLayout>
         }
       />
 
       <Route
         path="/products"
         element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <Products />
-            </AdminLayout>
-          </ProtectedRoute>
+          <AdminLayout>
+            <Products />
+          </AdminLayout>
         }
       />
 
